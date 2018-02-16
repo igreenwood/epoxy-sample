@@ -1,0 +1,50 @@
+// Top-level build file where you can add configuration options common to all sub-projects/modules.
+
+buildscript {
+  ext.kotlin_version = '1.2.10'
+  repositories {
+    google()
+    jcenter()
+  }
+  dependencies {
+    classpath 'com.android.tools.build:gradle:3.0.1'
+    classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
+
+    // NOTE: Do not place your application dependencies here; they belong
+    // in the individual module build.gradle files
+  }
+}
+
+allprojects {
+  repositories {
+    google()
+    jcenter()
+  }
+}
+
+task clean(type: Delete) {
+  delete rootProject.buildDir
+}
+
+ext {
+  support_library_version = '27.0.2'
+  constraint_layout_version = '1.1.0-beta5'
+  ktx_version = '0.1'
+
+  //log
+  timber_version = '4.5.1'
+
+  //image
+  picasso_version = '2.5.2'
+
+  //rx
+  rx_java_version = '2.1.4'
+  rx_android_version = '2.0.1'
+  rx_kotlin_version = '2.1.0'
+
+  // data binding
+  data_binding_version = '2.3.3'
+
+  // epoxy
+  epoxy_version = '2.9.0'
+}
