@@ -1,7 +1,7 @@
 package com.isseiaoki.epoxy.recyclerview.controller
 
+import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
-import com.isseiaoki.epoxy.recyclerview.SimpleCarouselModel_
 import com.isseiaoki.epoxy.recyclerview.SimpleItem
 import com.isseiaoki.epoxy.recyclerview.model.BannerModel_
 import com.isseiaoki.epoxy.recyclerview.model.EmptyTextModel_
@@ -35,8 +35,8 @@ class SimpleController(
     }
     // carousel header
     if (banners.isNotEmpty()) {
-      SimpleCarouselModel_()
-          .numViewsToShowOnScreen(1.0f)
+      CarouselModel_()
+          .numViewsToShowOnScreen(0.95f)
           .id("carousel")
           .spanSizeOverride { _, _, _ -> 2 }
           .models(

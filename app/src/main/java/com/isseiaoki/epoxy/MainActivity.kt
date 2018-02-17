@@ -7,9 +7,7 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.isseiaoki.epoxy.databinding.ActivityMainBinding
-import com.isseiaoki.epoxy.ext.dpToPx
 import com.isseiaoki.epoxy.ext.getUrlFromDrawableResId
-import com.isseiaoki.epoxy.recyclerview.EdgeSpacingDecorator
 import com.isseiaoki.epoxy.recyclerview.OnLoadMoreListener
 import com.isseiaoki.epoxy.recyclerview.SimpleItem
 import com.isseiaoki.epoxy.recyclerview.controller.SimpleController
@@ -69,15 +67,8 @@ class MainActivity : AppCompatActivity() {
         recycleChildrenOnDetach = true
       }
       layoutManager = lm
-      // disable default spacing decoration
-      setItemSpacingPx(0)
-      // set custom spacing decoration
-      addItemDecoration(
-          EdgeSpacingDecorator(
-              spacingPx = context.dpToPx(8),
-              ignoreHeader = true
-          )
-      )
+      clipToPadding = false
+      setItemSpacingDp(6)
       addOnScrollListener(object : OnLoadMoreListener(lm) {
         override fun onLoadMore() {
           loadMore()

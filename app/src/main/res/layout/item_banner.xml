@@ -13,6 +13,7 @@
       android:scaleType="centerCrop"
       app:ariv_height_ratio="533"
       app:ariv_width_ratio="800"
+      android:padding="0dp"
       tools:src="@drawable/banner_1"
       />
 

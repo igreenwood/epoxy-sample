@@ -5,6 +5,7 @@
   <dimen name="spacing">16dp</dimen>
   <dimen name="spacing_large">24dp</dimen>
   <dimen name="spacing_xlarge">32dp</dimen>
+  <dimen name="spacing_small_negative">-8dp</dimen>
 
   <dimen name="card_corner_radius">4dp</dimen>
 

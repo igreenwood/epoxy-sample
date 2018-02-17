@@ -13,7 +13,6 @@
         android:id="@+id/app_bar_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-
         android:theme="@style/AppTheme.AppBarOverlay"
         >
 
@@ -38,6 +37,8 @@
           android:id="@+id/recycler_view"
           android:layout_width="match_parent"
           android:layout_height="match_parent"
+          android:paddingStart="@dimen/spacing_small"
+          android:paddingEnd="@dimen/spacing_small"
           />
 
     </android.support.v4.widget.SwipeRefreshLayout>
