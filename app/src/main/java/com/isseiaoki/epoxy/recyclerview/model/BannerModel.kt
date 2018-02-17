@@ -18,7 +18,7 @@ abstract class BannerModel : DataBindingModel<ItemBannerBinding>() {
   @EpoxyAttribute(EpoxyAttribute.Option.DoNotHash) lateinit var onBannerClicked: (SimpleItem) -> Unit
 
   override fun bind(binding: ItemBannerBinding, context: Context) {
-    Picasso.with(context).load(banner.imageUrl).fit().into(binding.bannerImage)
+    Picasso.with(context).load(banner.imageUrl).into(binding.bannerImage)
     binding.root.setOnClickListener { onBannerClicked(banner) }
   }
 

@@ -1,7 +1,10 @@
 package com.isseiaoki.epoxy.recyclerview.controller
 
+import android.content.Context
+import com.airbnb.epoxy.Carousel
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
+import com.isseiaoki.epoxy.ext.dpToPx
 import com.isseiaoki.epoxy.recyclerview.SimpleItem
 import com.isseiaoki.epoxy.recyclerview.model.BannerModel_
 import com.isseiaoki.epoxy.recyclerview.model.EmptyTextModel_
@@ -10,6 +13,7 @@ import com.isseiaoki.epoxy.recyclerview.model.LoadingFooterModel_
 import timber.log.Timber
 
 class SimpleController(
+    var context: Context,
     private var onBannerClicked: (SimpleItem) -> Unit = {},
     private var onItemClicked: (SimpleItem) -> Unit = {},
     filterDuplicates: Boolean = true
@@ -35,8 +39,9 @@ class SimpleController(
     }
     // carousel header
     if (banners.isNotEmpty()) {
+      val spacing = context.dpToPx(8)
       CarouselModel_()
-          .numViewsToShowOnScreen(0.95f)
+          .padding(Carousel.Padding(spacing, 0, 0, 0, spacing))
           .id("carousel")
           .spanSizeOverride { _, _, _ -> 2 }
           .models(

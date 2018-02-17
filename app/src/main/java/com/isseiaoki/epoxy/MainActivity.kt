@@ -49,6 +49,7 @@ class MainActivity : AppCompatActivity() {
 
   private fun setupRecyclerView() {
     val nonnullController = SimpleController(
+        context = applicationContext,
         onBannerClicked = {
           Toast.makeText(this, "banner ${it.id} tapped", Toast.LENGTH_SHORT).show()
         },
