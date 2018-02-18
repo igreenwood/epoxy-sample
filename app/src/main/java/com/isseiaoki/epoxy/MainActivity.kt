@@ -4,12 +4,13 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
+import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import com.isseiaoki.epoxy.databinding.ActivityMainBinding
+import com.isseiaoki.epoxy.entity.SimpleItem
 import com.isseiaoki.epoxy.ext.getUrlFromDrawableResId
 import com.isseiaoki.epoxy.recyclerview.OnLoadMoreListener
-import com.isseiaoki.epoxy.entity.SimpleItem
 import com.isseiaoki.epoxy.recyclerview.controller.SimpleController
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -70,11 +71,6 @@ class MainActivity : AppCompatActivity() {
       layoutManager = lm
       clipToPadding = false
       setItemSpacingDp(6)
-      addOnScrollListener(object : OnLoadMoreListener(lm) {
-        override fun onLoadMore() {
-          loadMore()
-        }
-      })
     }
     binding.refreshLayout.apply {
       setOnRefreshListener {
@@ -100,11 +96,7 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                  controller?.update(
-                      banners = it.first,
-                      items = it.second
-                  )
-                  offset += it.second.size
+                  updateItems(it)
                 },
                 {
                   Timber.w(it)
@@ -121,8 +113,7 @@ class MainActivity : AppCompatActivity() {
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                  controller?.addAll(it)
-                  offset += it.size
+                  addItems(it)
                 },
                 {
                   Timber.w(it)
@@ -160,6 +151,27 @@ class MainActivity : AppCompatActivity() {
     binding.refreshLayout.post {
       binding.refreshLayout.isRefreshing = isRefreshing
     }
+  }
+
+  private fun updateItems(it: Pair<List<SimpleItem>, List<SimpleItem>>) {
+    controller?.update(
+        banners = it.first,
+        items = it.second
+    )
+    offset += it.second.size
+
+    binding.recyclerView.apply {
+      addOnScrollListener(object : OnLoadMoreListener(layoutManager as LinearLayoutManager) {
+        override fun onLoadMore() {
+          loadMore()
+        }
+      })
+    }
+  }
+
+  private fun addItems(it: List<SimpleItem>) {
+    controller?.addAll(it)
+    offset += it.size
   }
 
   companion object {
