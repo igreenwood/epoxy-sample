@@ -5,7 +5,7 @@ import com.airbnb.epoxy.Carousel
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
 import com.isseiaoki.epoxy.ext.dpToPx
-import com.isseiaoki.epoxy.recyclerview.SimpleItem
+import com.isseiaoki.epoxy.entity.SimpleItem
 import com.isseiaoki.epoxy.recyclerview.model.BannerModel_
 import com.isseiaoki.epoxy.recyclerview.model.EmptyTextModel_
 import com.isseiaoki.epoxy.recyclerview.model.ItemModel_

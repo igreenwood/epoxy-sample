@@ -5,7 +5,7 @@ import com.airbnb.epoxy.EpoxyAttribute
 import com.airbnb.epoxy.EpoxyModelClass
 import com.isseiaoki.epoxy.R
 import com.isseiaoki.epoxy.databinding.ItemImageBinding
-import com.isseiaoki.epoxy.recyclerview.SimpleItem
+import com.isseiaoki.epoxy.entity.SimpleItem
 import com.squareup.picasso.Picasso
 
 /**

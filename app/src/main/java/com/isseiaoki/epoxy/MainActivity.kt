@@ -9,7 +9,7 @@ import android.widget.Toast
 import com.isseiaoki.epoxy.databinding.ActivityMainBinding
 import com.isseiaoki.epoxy.ext.getUrlFromDrawableResId
 import com.isseiaoki.epoxy.recyclerview.OnLoadMoreListener
-import com.isseiaoki.epoxy.recyclerview.SimpleItem
+import com.isseiaoki.epoxy.entity.SimpleItem
 import com.isseiaoki.epoxy.recyclerview.controller.SimpleController
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -135,7 +135,8 @@ class MainActivity : AppCompatActivity() {
     return Single.create {
       val banners = listOf(R.drawable.banner_1, R.drawable.banner_2, R.drawable.banner_3)
           .mapIndexed { index, banner ->
-            SimpleItem(index.toLong(), resources.getUrlFromDrawableResId(banner))
+            SimpleItem(index.toLong(),
+                resources.getUrlFromDrawableResId(banner))
           }
       it.onSuccess(banners)
     }
