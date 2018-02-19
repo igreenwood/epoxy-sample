@@ -4,7 +4,6 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.GridLayoutManager
-import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
 import co.monomy.presentation.view.component.recyclerview.OnLoadMoreListener
@@ -71,7 +70,7 @@ class MainActivity : AppCompatActivity() {
       layoutManager = lm
       clipToPadding = false
       setItemSpacingDp(6)
-      addOnScrollListener(object : OnLoadMoreListener(layoutManager as LinearLayoutManager) {
+      addOnScrollListener(object : OnLoadMoreListener(lm) {
         override fun onLoadMore() {
           loadMore()
         }
