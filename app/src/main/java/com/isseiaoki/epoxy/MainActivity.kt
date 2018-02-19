@@ -7,10 +7,10 @@ import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.widget.Toast
+import co.monomy.presentation.view.component.recyclerview.OnLoadMoreListener
 import com.isseiaoki.epoxy.databinding.ActivityMainBinding
 import com.isseiaoki.epoxy.entity.SimpleItem
 import com.isseiaoki.epoxy.ext.getUrlFromDrawableResId
-import com.isseiaoki.epoxy.recyclerview.OnLoadMoreListener
 import com.isseiaoki.epoxy.recyclerview.controller.SimpleController
 import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
@@ -71,6 +71,11 @@ class MainActivity : AppCompatActivity() {
       layoutManager = lm
       clipToPadding = false
       setItemSpacingDp(6)
+      addOnScrollListener(object : OnLoadMoreListener(layoutManager as LinearLayoutManager) {
+        override fun onLoadMore() {
+          loadMore()
+        }
+      })
     }
     binding.refreshLayout.apply {
       setOnRefreshListener {
@@ -159,14 +164,6 @@ class MainActivity : AppCompatActivity() {
         items = it.second
     )
     offset += it.second.size
-
-    binding.recyclerView.apply {
-      addOnScrollListener(object : OnLoadMoreListener(layoutManager as LinearLayoutManager) {
-        override fun onLoadMore() {
-          loadMore()
-        }
-      })
-    }
   }
 
   private fun addItems(it: List<SimpleItem>) {

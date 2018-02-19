@@ -4,13 +4,12 @@ import android.content.Context
 import com.airbnb.epoxy.Carousel
 import com.airbnb.epoxy.CarouselModel_
 import com.airbnb.epoxy.EpoxyController
-import com.isseiaoki.epoxy.ext.dpToPx
 import com.isseiaoki.epoxy.entity.SimpleItem
+import com.isseiaoki.epoxy.ext.dpToPx
 import com.isseiaoki.epoxy.recyclerview.model.BannerModel_
 import com.isseiaoki.epoxy.recyclerview.model.EmptyTextModel_
 import com.isseiaoki.epoxy.recyclerview.model.ItemModel_
 import com.isseiaoki.epoxy.recyclerview.model.LoadingFooterModel_
-import timber.log.Timber
 
 class SimpleController(
     var context: Context,
@@ -71,7 +70,6 @@ class SimpleController(
   }
 
   fun update(banners: List<SimpleItem>, items: List<SimpleItem>) {
-    Timber.e("update")
     this.banners.clear()
     this.banners.addAll(banners)
     this.items.clear()
